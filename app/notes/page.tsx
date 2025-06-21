@@ -3,6 +3,7 @@ import { getNotes } from "../../lib/api";
 
 
 
+  
 
 export default async function Notes() {
     const notes = await getNotes()
