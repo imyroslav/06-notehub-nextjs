@@ -9,7 +9,7 @@ type NoteListProps = {
 
 export default function NoteList({ items }: NoteListProps) {
     return (
-        <ul>
+        <ul className={css.list}>
             {items.notes.map((element) => (
                 <NoteItem key={element.id} item={element} />
             ))}
