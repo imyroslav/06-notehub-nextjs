@@ -11,10 +11,10 @@ export type NoteItem = {
     updatedAt: string
 }
 
-export type NoteList = {
-    notes: NoteItem[]
-    total: number
-
+export type GetNotes = {
+  notes: Note[];
+  total: number;
+  totalPages: number;
 }
 
 const request = axios.create({
@@ -24,10 +24,27 @@ const request = axios.create({
     },
   });
 
-export const getNotes = async (): Promise<NoteList> => {
-    const { data } = await request.get<NoteList>("/notes")
-    return data
-}
+export const getNotes = async (
+  page = 1,
+  perPage = 12,
+  search = ""
+): Promise<GetNotes> => {
+  const params: Record<string, string | number> = { page, perPage };
+
+  if (search.trim() !== "") {
+    params.search = search.trim();
+  }
+
+  const { data } = await request.get<GetNotes>("/notes", {
+    headers: {
+      Authorization: `Bearer ${process.env.NEXT_PUBLIC_NOTEHUB_TOKEN}`,
+    },
+    params,
+  });
+
+  return data;
+};
+
 
 
 export const createNote = async (note: {

@@ -1,4 +1,4 @@
-
+"use client"
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
@@ -25,7 +25,7 @@ export const NoteForm: React.FC<NoteFormProps> = ({ onClose }) => {
     mutationFn: createNote,
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['notes'] });
-      onClose(); // Закриваємо після інвалідейту
+      onClose(); 
     },
     onError: (error) => {
       console.error('Note creation failed:', error);
