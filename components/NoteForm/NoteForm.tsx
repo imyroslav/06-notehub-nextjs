@@ -11,11 +11,11 @@ interface NoteFormProps {
 }
 
 const validationSchema = Yup.object().shape({
-  title: Yup.string().min(3).max(50).required('Title is required'),
-  content: Yup.string().max(500, 'Maximum length is 500'),
+  title: Yup.string().min(3).max(50).required("Title is required"),
+  content: Yup.string().max(500, "Maximum length is 500"),
   tag: Yup.string()
-    .oneOf(['Todo', 'Work', 'Personal', 'Meeting', 'Shopping'], 'Invalid tag')
-    .required('Tag is required'),
+    .oneOf(["Work", "Personal", "Meeting", "Shopping", "Todo"], "Invalid tag")
+    .required("Tag is required"),
 });
 
 export const NoteForm: React.FC<NoteFormProps> = ({ onClose }) => {
@@ -24,11 +24,11 @@ export const NoteForm: React.FC<NoteFormProps> = ({ onClose }) => {
   const { mutate, isPending } = useMutation({
     mutationFn: createNote,
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ['notes'] });
+      queryClient.invalidateQueries({ queryKey: ["notes"] });
       onClose(); 
     },
     onError: (error) => {
-      console.error('Note creation failed:', error);
+      console.error("Note creation failed:", error);
     },
   });
 
