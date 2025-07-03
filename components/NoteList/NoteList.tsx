@@ -5,7 +5,7 @@ import { deleteNote } from '../../lib/api';
 import type { Note } from '../../types/note';
 import Link from 'next/link';
 
-import css from './NoteList.module.css';
+import css from "./NoteList.module.css";
 
 interface NoteListProps {
   notes: Note[];
@@ -24,6 +24,7 @@ export default function NoteList({ notes }: NoteListProps) {
   const handleDelete = (id: number) => {
     mutation.mutate(id);
   };
+    
 
   if (!notes.length) return null;
 
