@@ -1,15 +1,15 @@
-'use client';
+"use client";
 
-import { useState } from 'react';
-import { useQuery, keepPreviousData } from '@tanstack/react-query';
-import { useDebounce } from 'use-debounce';
+import { useState } from "react";
+import { useQuery, keepPreviousData } from "@tanstack/react-query";
+import { useDebounce } from "use-debounce";
 import { getNotes } from "../../lib/api";
 import SearchBox from "../../components/SearchBox/SearchBox";
-import NoteList from '../../components/NoteList/NoteList';
-import Pagination from '../../components/Pagination/Pagination';
-import { NoteModal } from '../../components/NoteModal/NoteModal';
-import type { GetNotes } from '../../lib/api';
-import css from './page.module.css';
+import NoteList from "../../components/NoteList/NoteList";
+import Pagination from "../../components/Pagination/Pagination";
+import { NoteModal } from "../../components/NoteModal/NoteModal";
+import type { GetNotes } from "../../lib/api";
+import css from "./page.module.css";
 
 export default function Notes({ initialData }: { initialData: GetNotes }) {
   const [page, setPage] = useState(1); 
