@@ -1,9 +1,9 @@
 "use client"
 
-import React, { useEffect } from 'react';
-import { createPortal } from 'react-dom';
-import css from './NoteModal.module.css';
-import { NoteForm } from '../NoteForm/NoteForm';
+import React, { useEffect } from "react";
+import { createPortal } from "react-dom";
+import css from "./NoteModal.module.css";
+import { NoteForm } from "../NoteForm/NoteForm";
 
 interface NoteModalProps {
   onClose: () => void;
