@@ -5,7 +5,7 @@ import { fetchNoteById } from "../../../lib/api";
 
 
 type Props = {
-  params: Promise<{ id: string }>;
+  params: Promise<{ id: number }>;
 };
 
 export default async function NoteDetailsPage({ params }: Props) {
