@@ -1,11 +1,11 @@
 import axios from "axios";
-import { type NoteItem } from "../types/note"
+import type { Note } from "../types/note"
 
 
 
 
 export type GetNotes = {
-  notes: NoteItem[];
+  notes: Note[];
   totalPages: number;
 }
 
@@ -43,8 +43,8 @@ export const createNote = async (note: {
   title: string;
   content: string;
   tag: string;
-}): Promise<NoteItem> => {
-  const { data } = await request.post<NoteItem>("/notes", note, {
+}): Promise<Note> => {
+  const { data } = await request.post<Note>("/notes", note, {
     headers: {
       Authorization: `Bearer ${process.env.NEXT_PUBLIC_NOTEHUB_TOKEN}`,
     },
@@ -53,8 +53,8 @@ export const createNote = async (note: {
   return data;
 };
 
-export const deleteNote = async (id: number): Promise<NoteItem> => {
-  const { data } = await request.delete<NoteItem>(`/notes/${id}`, {
+export const deleteNote = async (id: number): Promise<Note> => {
+  const { data } = await request.delete<Note>(`/notes/${id}`, {
     headers: {
       Authorization: `Bearer ${process.env.NEXT_PUBLIC_NOTEHUB_TOKEN}`,
     },
@@ -63,8 +63,8 @@ export const deleteNote = async (id: number): Promise<NoteItem> => {
   return data;
 };
 
-export const fetchNoteById = async (id: number): Promise<NoteItem> => {
-  const { data } = await request.get<NoteItem>(`/notes/${id}`, {
+export const fetchNoteById = async (id: string): Promise<Note> => {
+  const { data } = await request.get<Note>(`/notes/${id}`, {
      headers: {
       Authorization: `Bearer ${process.env.NEXT_PUBLIC_NOTEHUB_TOKEN}`,
     },
