@@ -21,7 +21,7 @@ export default function NoteList({ notes }: NoteListProps) {
     },
   });
 
-  const handleDelete = (id: number) => {
+  const handleDelete = (id: string) => {
     mutation.mutate(id);
   };
     
@@ -32,7 +32,6 @@ export default function NoteList({ notes }: NoteListProps) {
     <ul className={css.list}>
       {notes.map(({ id, title, content, tag }) => (
         <li key={id} className={css.listItem}>
-          
           <h2 className={css.title}>{title}</h2>
           <p className={css.content}>{content}</p>
           <div className={css.footer}>
