@@ -33,7 +33,7 @@ export const getNotes = async (
     },
     params,
   });
-  // console.log(data)
+  console.log(data)
   return data;
 };
 
