@@ -33,7 +33,7 @@ export const getNotes = async (
     },
     params,
   });
-  console.log(data)
+  // console.log(data)
   return data;
 };
 
@@ -53,7 +53,7 @@ export const createNote = async (note: {
   return data;
 };
 
-export const deleteNote = async (id: number): Promise<Note> => {
+export const deleteNote = async (id: string): Promise<Note> => {
   const { data } = await request.delete<Note>(`/notes/${id}`, {
     headers: {
       Authorization: `Bearer ${process.env.NEXT_PUBLIC_NOTEHUB_TOKEN}`,
